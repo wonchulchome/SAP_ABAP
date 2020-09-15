@@ -1,0 +1,29 @@
+1. SELECTION-SCREEN BEGIN OF LINE.
+   SELECTION-SCREEN END OF LINE.
+: 파라미터를 여러 개 묶어서 한 라인으로 생성, 라인에서 SELECTION-OPTIONS, SELECTION-SCREEN SKIP n 구문을 사용 할 수 없음.
+
+2. SELECTION-SCREEN SKIP n.
+: 빈 라인을 n개 삽입함
+
+3. SELECTION-SCREEN ULINE.
+: Under line을 추가함, SELECTION-SCREEN ULINE /1(10): /는 New 라인, 위치, 
+SELECTION-SCREEN ULINE POS_LOW(10) : pos_low는 파라미터 위치에서 시작
+SELECTION-SCREEN ULINE POS_HIGH(10) : pos_high는 리포트 라인 길이 끝에서 시작
+
+4. SELECTION-SCREEN POSITION pos.
+: SELECTION-SCREEN BEGIN OF LINE 블록 안에서 파라미터의 위치를 지정함
+
+5. SELECTION-SCREEN COMMENT fmt name.
+: 파라미터에 대한 내역을 지정, fmt는 /pos(len), pos(len) of (len)을 의미, SELECTION-SCREEN COMMENT 1(10) text-1 FOR FIELD p_1.
+
+6. SELECTION-SCREEN PUSHBUTTON fmt name USER-COMMAND ucom.
+: 화면에 버튼을 추가하여 클릭하면 AT SELECTION-SCREEN에서 SSCRFIELDS-UCOMM에 저장됨
+
+7. SELECTION-SCREEN BEGIN OF BLOCK block.
+   SELECTION-SCREEN END OF BLOCK block.
+: PARAMETER, SELECT-OPTIONS 등 블록 형성, WITH FRAME: 프레임을 추가함, TITLE title : 프레임의 TITLE을 추가함,
+NO INTERVALS : 블록 안의 SELECT-OPTIONS의 LOW 값만 보임
+
+8. SELECTION-SCREEN FUNCTION KEY n.
+: 펑션 키를 추가함, TABLES : SSCRFIELDS 구문이 선언되어야 함.
+펑션 키 내역은 INITIALIZATION 에서 MOVE '펑션키 1' TO SSCRFIELDS-FUNCTXT_01 펑션 키를 클릭하면 AT SELECTION-SCREEN에서 SSCRFIELDS-UCOMM에 저장됨.
